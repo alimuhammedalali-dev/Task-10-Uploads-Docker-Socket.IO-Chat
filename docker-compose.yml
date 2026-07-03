@@ -7,9 +7,8 @@ services:
       - "3000:3000" # يربط المنفذ 3000 بالمنفذ 3000 داخل الحاوية
     environment:
       - MONGODB_URL=mongodb://mongo:27017/ali
-      - CLOUDINARY_CLOUD_NAME=xkectvmn
-      - CLOUDINARY_API_KEY=547842524227624
-      - CLOUDINARY_API_SECRET=busCm5cxfhzBkdYAYwkbeizFs_s
+      - CLOUD_NAME=xkectvmn
+      - API_KEY_CLOUD=547842524227624
     volumes:
       - ./uploads:/app/uploads # لمزامنة الصور المرفوعة محلياً
     depends_on:
