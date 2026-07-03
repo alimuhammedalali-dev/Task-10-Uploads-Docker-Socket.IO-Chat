@@ -32,7 +32,7 @@ require("./socket")(io);
  mongoose.connect(process.env.MONGODB_URL)
     .then(() => {
         console.log("Connected to database successfully") 
-        app.listen(PORT, () => {
+        server.listen(PORT, () => {
             console.log("Server is running successfully");
         })
      })
