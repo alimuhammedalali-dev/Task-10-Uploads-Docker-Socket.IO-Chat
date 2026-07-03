@@ -6,12 +6,16 @@ const asyncHandler = require("../utils/asyncHandler");
 const uploadLocal = require("../middlewares/multer");
 const multer = require("multer");
 
-router.post("/local", 
-    [uploadLocal.single("file")],
-    asyncHandler(uploadsController.local))
+router.post(
+  "/local",
+  uploadLocal.single("file"),
+  asyncHandler(uploadsController.local),
+);
 
-router.post("/external", 
-    [multer().single("file")],
-    asyncHandler(uploadsController.external))
+router.post(
+  "/external",
+  multer().single("file"),
+  asyncHandler(uploadsController.external),
+);
 
 module.exports = router;

@@ -1,29 +1,29 @@
 const uploadToCloudinary = require("../utils/uploadToCloudinary");
 
 class UploadsController {
-    local = async (req, res) => {
-        const file = req.file;
+  local = async (req, res) => {
+    const file = req.file;
 
-        if(!file) {
-            return res.status(400).json({ message: "File is required" });
-        }
-
-        const filePath = file.path;
-
-        res.status(200).json({ path: filePath })
+    if (!file) {
+      return res.status(400).json({ message: "File is required" });
     }
 
-    external = async (req, res) => {
-        const file = req.file;
+    const filePath = file.path;
 
-        if(!file) {
-            return res.status(400).json({ message: "File is required" });
-        }
+    res.status(200).json({ path: filePath });
+  };
 
-        const path = await uploadToCloudinary(file);
+  external = async (req, res) => {
+    const file = req.file;
 
-        res.status(200).json({ path })
+    if (!file) {
+      return res.status(400).json({ message: "File is required" });
     }
+
+    const path = await uploadToCloudinary(file);
+
+    res.status(200).json({ path });
+  };
 }
 
 module.exports = new UploadsController();
