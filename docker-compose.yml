@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  api:
+    build: .
+    ports:
+      - "3000:3000" # يربط المنفذ 3000 بالمنفذ 3000 داخل الحاوية
+    environment:
+      - MONGODB_URI=mongodb://mongo:27017/ali
+      - CLOUDINARY_CLOUD_NAME=xkectvmn
+      - CLOUDINARY_API_KEY=547842524227624
+      - CLOUDINARY_API_SECRET=busCm5cxfhzBkdYAYwkbeizFs_s
+    volumes:
+      - ./uploads:/app/uploads # لمزامنة الصور المرفوعة محلياً
+    depends_on:
+      - mongo # يضمن عدم تشغيل التطبيق إلا بعد إقلاع قاعدة البيانات أولاً
+
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+volumes:
+  mongo_data:
