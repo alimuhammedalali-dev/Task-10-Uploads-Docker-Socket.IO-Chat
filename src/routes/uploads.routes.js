@@ -8,13 +8,13 @@ const multer = require("multer");
 
 router.post(
   "/local",
-  uploadLocal.single("file"),
+  [uploadLocal.single("file")],
   asyncHandler(uploadsController.local),
 );
 
 router.post(
   "/external",
-  multer().single("file"),
+  [multer().single("file")],
   asyncHandler(uploadsController.external),
 );
 
